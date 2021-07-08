@@ -3,7 +3,7 @@ const servers = {
   iceServers: [
     {
       // urls: ["stun:stun1.1.google.com:19302", "stun:stun2.1.google.com:19302"],
-      url: 'turn:numb.viagenie.ca',
+      url: 'turn:numb.viagenie.ca:3478',
       credential: '123321',
       username: 'ardan@mailinator.com'
     },
