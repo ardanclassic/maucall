@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState } from "react";
 import { firestore } from "../../utils/firebase";
 import { useLocation, useHistory } from "react-router-dom";
 import { pc } from "../../utils/webRTC";
@@ -6,17 +6,13 @@ import "./style.scss"
 
 const Videos = ({ mode, callID, setPage }) => {
   let history = useHistory();
-  const location = useLocation();
+  const location = useLocation();  
+  const joinID = new URLSearchParams(location.search).get('id');
+  if (joinID) callID = joinID;
   // console.log(location, window.location)
 
   const [webcamActive, setWebcamActive] = useState(false);
-  const [roomID, setRoomID] = useState("");
-
-  useEffect(() => {
-    const joinID = new URLSearchParams(location.search).get('id');
-    if (joinID) callID = joinID;
-    setRoomID(callID)
-  }, [roomID])
+  const [roomID, setRoomID] = useState(callID);
 
   const localRef = useRef();
   const remoteRef = useRef();
@@ -163,11 +159,9 @@ const Videos = ({ mode, callID, setPage }) => {
 
   const handleCopyID = () => {
     const url = window.location;
-    const linkURL = `${url.host}${url.pathname}?id=${roomID}`;
+    const linkURL = `${url.host}/join?id=${roomID}`;
     navigator.clipboard.writeText(linkURL);
   }
-  
-  
 
   return (
     <div className="videos">
