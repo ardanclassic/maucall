@@ -6,13 +6,17 @@ import "./style.scss"
 
 const Videos = ({ mode, callID, setPage }) => {
   let history = useHistory();
-  const location = useLocation();  
-  const joinID = new URLSearchParams(location.search).get('id');
-  if (joinID) callID = joinID;
+  const location = useLocation();
   // console.log(location, window.location)
 
   const [webcamActive, setWebcamActive] = useState(false);
-  const [roomID, setRoomID] = useState(callID);
+  const [roomID, setRoomID] = useState("");
+
+  useEffect(() => {
+    const joinID = new URLSearchParams(location.search).get('id');
+    if (joinID) callID = joinID;
+    setRoomID(callID)
+  }, [roomID])
 
   const localRef = useRef();
   const remoteRef = useRef();
