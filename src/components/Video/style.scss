@@ -1,0 +1,167 @@
+
+
+video {
+  display: block;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  font-family: monospace;
+  background: #000;
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+  padding: 30px;
+  color: var(--color-primary);
+  background-color: #000;
+  box-shadow: inset 0 0 36px -8px deepskyblue;
+  font-family: monospace;
+  z-index: 10;
+
+  h3 {
+    margin: 0;
+    font-weight: normal;
+    color: white;
+    font-family: monospace;
+    letter-spacing: 2px;
+  }
+
+  .container {
+    display: flex;
+    margin-top: 40px;
+    font-size: 16px;
+  }
+
+  button.secondary {
+    margin-left: auto;
+    background-color: var(--color-primary-light);
+    color: var(--color-primary);
+    margin-right: 20px;
+  }
+}
+
+.videos {
+  .local {
+    position: absolute;
+    bottom: 40px;
+    right: 40px;
+    width: 350px;
+    height: 250px;
+    background-color: #000;
+    transition: 2s all ease-in;
+    z-index: 10;
+    opacity: 0;
+
+    &.active {
+      opacity: 1;
+      border-radius: 36% 64% 44% 56% / 61% 32% 68% 39% ;
+      box-shadow: 0 0 86px -20px turquoise;
+      animation: morph 10s ease-in-out infinite;
+    }
+  }
+
+  @keyframes morph {
+    0% {
+      border-radius: 36% 64% 44% 56% / 61% 32% 68% 39% ;
+      box-shadow: 0 0 86px -20px turquoise;
+    }
+    25% {
+      border-radius: 36% 64% 76% 24% / 34% 32% 68% 66% ;
+      box-shadow: 15px -20px 56px -10px crimson;
+    }
+    50% {
+      border-radius: 81% 19% 58% 42% / 37% 61% 39% 63% ;
+      box-shadow: -10px 25px 75px -15px gold;
+    }
+    75% {
+      border-radius: 61% 39% 58% 42% / 53% 61% 39% 47% ;
+      box-shadow: -20px -15px 45px -8px violet;
+    }
+    100% {
+      border-radius: 36% 64% 44% 56% / 61% 32% 68% 39% ;
+      box-shadow: 0 0 86px -20px turquoise;
+    }
+  }
+
+  .remote {
+    background: #000;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+  }
+
+  .buttons-area {
+    position: absolute;
+    left: 50%;
+    bottom: 40px;
+    transform: translateX(-50%);
+    display: flex;
+    z-index: 1;
+    padding: 1em;
+    background: #000;
+    border-radius: 16px;
+    box-shadow: 0 0 56px -8px deepskyblue;
+
+    .btn {
+      width: 56px;
+      height: 56px;
+      cursor: pointer;
+      padding: 1em;
+      border-radius: 1em;
+      border: none;
+      margin: auto 1em;
+      color: white;
+      i {
+        font-size: 20px;
+      }
+    }
+
+    .btn-hangup {
+      background-color: #e84104;
+    }
+
+    .btn-more {
+      background-color: #60809e;
+    }
+
+
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  body {
+    background-color: black;
+    .videos {
+      .local {
+        width: 75%;
+        height: 30%;
+        bottom: 20%;
+        z-index: 2;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      .remote {
+        position: absolute;
+        top: 10%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 75%;
+        height: 30%;
+        background-color: #000;
+        transition: 2s all ease-in;
+        z-index: 2;
+        border-radius: 36% 64% 44% 56% / 61% 32% 68% 39%;
+        box-shadow: 0 0 86px -20px turquoise;
+        animation: morph 10s ease-in-out infinite;
+      }
+    }
+  }
+}
