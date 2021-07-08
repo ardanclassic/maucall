@@ -169,7 +169,7 @@ const Videos = ({ mode, callID, setPage }) => {
       <video ref={remoteRef} autoPlay playsInline className="remote" />
 
       <div className="buttons-area">
-        <button onClick={hangUp} disabled={!webcamActive} className="btn btn-hangup">
+        <button onClick={() => hangUp()} disabled={!webcamActive} className="btn btn-hangup">
           <i className="fas fa-phone-slash"></i>
         </button>
 
@@ -186,7 +186,7 @@ const Videos = ({ mode, callID, setPage }) => {
               <button onClick={() => backHome()} className="secondary">
                 Cancel
               </button>
-              <button onClick={setupSources}>Okay!</button>
+              <button onClick={() => setupSources()}>Okay!</button>
             </div>
           </div>
         </div>
